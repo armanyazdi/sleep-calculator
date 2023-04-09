@@ -4,26 +4,13 @@ import org.joda.time.DateTime;
 import java.util.Scanner;
 
 public class SleepCalculator {
-    static Scanner scanner;
-    static DateTime firstTime, secondTime, thirdTime, fourthTime, fifthTime, sixthTime;
+    private static DateTime firstTime, secondTime, thirdTime, fourthTime, fifthTime, sixthTime;
 
-    public static void sleepCalcultor() {
-        System.out.println(ConsoleColors.YELLOW + "1) Calculate bedtime");
-        System.out.println("2) Calculate wake-up time" + ConsoleColors.RESET);
-        System.out.print("Enter your choice: ");
-
-        scanner = new Scanner(System.in);
-        String choice = scanner.nextLine();
-
-        if (choice.equals("1")) bedTime();
-        else if (choice.equals("2")) wakeUpTime();
-        else System.out.println(ConsoleColors.RED_BOLD + "Exception: Invalid input!" + ConsoleColors.RESET);
-    }
-    private static void bedTime() {
+    public static void bedTime() {
         try {
             System.out.print("What time do you want to wake up? ");
 
-            scanner = new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
             String wakeUpTime = scanner.nextLine();
             DateTime time = DateTime.parse("T".concat(wakeUpTime));
 
@@ -49,7 +36,7 @@ public class SleepCalculator {
         }
     }
 
-    private static void wakeUpTime() {
+    public static void wakeUpTime() {
         DateTime now = new DateTime();
 
         firstTime = DateTime.parse(String.valueOf(now.plusHours(9).plusMinutes(15)));
